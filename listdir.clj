@@ -1,3 +1,5 @@
+(ns my-clojure-warehouse.listdir)
+
 (def curdir (clojure.java.io/file "."))
 
 (def files (file-seq curdir))

@@ -1,3 +1,5 @@
+(ns my-clojure-warehouse.greeting)
+
 (defn hello
   "No args"
   []
@@ -5,5 +7,5 @@
 
 (defn hello2
   "One arg"
-  [name]
-  (println "Hello, " name "!!"))
+  [^String name]
+  (println (format "Hello, %s!!" name)))

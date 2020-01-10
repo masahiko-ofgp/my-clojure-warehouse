@@ -1,3 +1,5 @@
+(ns my-clojure-warehouse.myclass)
+
 (defprotocol Name
   (getName [this]))
 
