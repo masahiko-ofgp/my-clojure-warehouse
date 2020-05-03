@@ -1,6 +1,6 @@
 (ns my-clojure-warehouse.fizzbuzz)
 
-(defn- fizzbuzz [n]
+(defn- fzbz [n]
   (let [fizz? (zero? (mod n 3))
         buzz? (zero? (mod n 5))]
     (cond
@@ -9,6 +9,6 @@
       buzz? "Buzz"
       :else n)))
 
-(defn fzbz [^long n]
+(defn fizzbuzz [^long n]
   (doseq [i (range 0 n)]
-    (println (fizzbuzz i))))
+    (println (fzbz i))))
