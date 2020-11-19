@@ -2,11 +2,10 @@
 
 個人学習用
 
-
 # Usage
 
 ```
-$ lein repl
+$ clj
 
 user=> (load-file "ファイル名")
 
@@ -24,8 +23,6 @@ Hello, Tom !!
 nil
 my-clojure-warehouse.greeting=> (in-ns 'user)
 #object[clojure.lang.Namespace 0x4a6d5660 "user"]
-user=> (quit)
-Bye for now!
-
+user=> (. System exit 0)
 
 ```
