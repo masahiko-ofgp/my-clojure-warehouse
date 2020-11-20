@@ -1,6 +1,8 @@
 (ns my-clojure-warehouse.l99)
 
 ;; L-01
+;; Clojure has `last` function in `clojure.core`.
+;; (last coll)
 (defn lst
   "Return the last element of a list." 
   [l]
@@ -11,6 +13,8 @@
       :else (recur (rest l)))))
 
 ;; L-02
+;; Clojure has `take-last` function in `clojure.core`.
+;; (take-last n coll)
 (defn lst-two
   "Find the last but one (last and penultimate) elements of a list."
   [l]
@@ -32,7 +36,9 @@
               (recur (- k 1) (rest l))))))
 
 ;; L-04
-(defn leng
+;; Clojure has `count` function in `clojure.core`.
+;; (count coll)
+(defn length
   "Find the number of elements of a list."
   [l]
   (when (list? l)
@@ -45,6 +51,8 @@
 
 
 ;; L-05
+;; Clojure has `reverse` function in `clojure.core`.
+;; (reverse coll)
 (defn revrs
   "Reverse a list."
   [l]
@@ -66,6 +74,8 @@
 
 
 ;; L-07
+;; Clojure has `flatten` function in `clojure.core`.
+;; (flatten coll)
 (defn flttn
   "Flatten a nested list structure."
   [l]
@@ -77,3 +87,17 @@
       :else (recur (aux acc (first ls)) (rest ls))))
   (reverse (aux '() l)))
 
+
+;; L-08
+;; Clojure has `dedupe` function in `clojure.core`.
+;; (dedupe coll)
+(defn compress
+  "Eliminate consecutive duplicates of list elements"
+  [l]
+  (when (list? l)
+    (cond
+      (empty? (or l (rest l))) l
+      (= (first l) (first (rest l))) (compress (rest l))
+      (not (= (first l) (first (rest l)))) (cons (first l)
+                                                 (compress (rest l)))
+      :else l)))
