@@ -101,3 +101,25 @@
       (not (= (first l) (first (rest l)))) (cons (first l)
                                                  (compress (rest l)))
       :else l)))
+
+
+;; L-09
+;; Clojure has `partition-by` function in `clojure.core`
+;; (partition-by identity coll)
+;; e.g.) (partition-by identity '(1 1 1 2 2 3 3))
+(defn pack
+  "Pack consecutive duplicates of list elements into sublists"
+  [l]
+  (when (list? l)
+    (defn aux
+      [current acc ls]
+      (cond
+        (empty? ls) ls
+        (empty? (rest ls)) (cons (cons (first ls) current) acc)
+        (= (first ls) (first (rest ls))) (aux (cons (first ls) current)
+                                            acc
+                                            (rest ls))
+        :else (recur '()
+                     (cons (cons (first ls) current) acc)
+                     (rest ls))))
+    (reverse (aux '() '() l))))
